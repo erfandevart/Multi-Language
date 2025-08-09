@@ -1,4 +1,4 @@
-import locales from '@/locales';
+import locales from "@/locales";
 
 export default function HomePage({ params }) {
   const { lang } = params;

@@ -17,11 +17,11 @@ export default function LangLayout({ children, params }) {
   }
 
   return (
-    <html lang={lang} dir={isRTL ? 'rtl' : 'ltr'}>
-      <body className={`min-h-screen p-6 ${isRTL ? 'text-right' : 'text-left'}`}>
+    <html lang={lang} dir={isRTL ? 'rtl' : 'ltr'} className='p-5'>
+      <body className={`min-h-screen ${isRTL ? 'text-right' : 'text-left'}`}>
         <header className="flex justify-between items-center mb-8">
           <h1 className="text-xl font-bold">سایت من ({lang.toUpperCase()})</h1>
-          <div className="space-x-2">
+          <div className="flex gap-x-3">
             {Object.keys(locales).map((code) => (
               <button
                 key={code}
@@ -36,10 +36,10 @@ export default function LangLayout({ children, params }) {
           </div>
         </header>
 
-        <nav className="mb-6 space-x-4">
-          <a href={`/${lang}`} className="underline">{texts.nav.home}</a>
-          <a href={`/${lang}/about`} className="underline">{texts.nav.about}</a>
-          <a href={`/${lang}/contact`} className="underline">{texts.nav.contact}</a>
+        <nav className="mb-6 flex gap-x-3 items-center">
+          <a href={`/${lang}`} className="underline-none">{texts.nav.home}</a>
+          <a href={`/${lang}/about`} className="underline-none">{texts.nav.about}</a>
+          <a href={`/${lang}/contact`} className="underline-none">{texts.nav.contact}</a>
         </nav>
 
         <main>{children}</main>
