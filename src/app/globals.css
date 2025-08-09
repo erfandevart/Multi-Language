@@ -4,9 +4,9 @@
 
 /* فونت‌ها را بسته به زبان تغییر بده */
 html[dir="rtl"] body {
-  font-family: 'Vazirmatn', sans-serif;
+  font-family: "Vazirmatn", sans-serif;
 }
 
 html[dir="ltr"] body {
-  font-family: 'Inter', sans-serif;
+  font-family: "Inter", sans-serif;
 }
