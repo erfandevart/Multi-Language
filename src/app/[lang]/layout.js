@@ -1,16 +1,35 @@
-'use client';
+"use client";
 
-import { useRouter, usePathname } from 'next/navigation';
+import { useRouter, usePathname } from "next/navigation";
 
 const langs = [
-  { code: 'fa', label: 'فارسی' },
-  { code: 'en', label: 'English' },
-  { code: 'ar', label: 'العربیة' },
+  { code: "fa", label: "فارسی" },
+  { code: "en", label: "English" },
+  { code: "ar", label: "العربیة" },
 ];
+
+const navTexts = {
+  fa: {
+    home: 'خانه',
+    about: 'درباره ما',
+    contact: 'تماس با ما',
+  },
+  en: {
+    home: 'Home',
+    about: 'About Us',
+    contact: 'Contact',
+  },
+  ar: {
+    home: 'الرئيسية',
+    about: 'معلومات عنا',
+    contact: 'اتصل بنا',
+  },
+};
+
 
 export default function LangLayout({ children, params }) {
   const { lang } = params;
-  const isRTL = ['fa', 'ar'].includes(lang);
+  const isRTL = ["fa", "ar"].includes(lang);
 
   const router = useRouter();
   const pathname = usePathname();
@@ -22,8 +41,10 @@ export default function LangLayout({ children, params }) {
   }
 
   return (
-    <html lang={lang} dir={isRTL ? 'rtl' : 'ltr'}>
-      <body className={`min-h-screen p-6 ${isRTL ? 'text-right' : 'text-left'}`}>
+    <html lang={lang} dir={isRTL ? "rtl" : "ltr"}>
+      <body
+        className={`min-h-screen p-6 ${isRTL ? "text-right" : "text-left"}`}
+      >
         <header className="flex justify-between items-center mb-8">
           <h1 className="text-xl font-bold">سایت من ({lang.toUpperCase()})</h1>
           <div className="flex gap-x-3">
@@ -32,7 +53,9 @@ export default function LangLayout({ children, params }) {
                 key={code}
                 onClick={() => changeLang(code)}
                 className={`px-3 py-1 rounded ${
-                  code === lang ? 'bg-blue-600 text-white' : 'bg-gray-300 text-gray-700'
+                  code === lang
+                    ? "bg-blue-600 text-white"
+                    : "bg-gray-300 text-gray-700"
                 } hover:bg-blue-500 transition`}
               >
                 {label}
@@ -42,8 +65,14 @@ export default function LangLayout({ children, params }) {
         </header>
 
         <nav className="mb-6 flex gap-x-5">
-          <a href={`/${lang}`} className="underline-none">خانه</a>
-          <a href={`/${lang}/about`} className="underline-none">درباره ما</a>
+          <nav className="mb-6 space-x-4">
+            <a href={`/${lang}`} className="underline">
+              {navTexts[lang].home}
+            </a>
+            <a href={`/${lang}/about`} className="underline">
+              {navTexts[lang].about}
+            </a>
+          </nav>
         </nav>
 
         <main>{children}</main>
